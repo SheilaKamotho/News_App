@@ -18,7 +18,8 @@ def source(news_source):
     '''
     View source page function and returns the news source page and its data
     '''
-    return render_template('source.html',id = news_source)
+    title = 'News Source'
+    return render_template('source.html',id = news_source, title = title)
 
 @app.route('/article/<news_article>')
 def article(news_article):
@@ -26,4 +27,5 @@ def article(news_article):
     '''
     View article page function and returns the news article page and its data
     '''
-    return render_template('article.html',id = news_article)
+    title = 'News Article'
+    return render_template('article.html',id = news_article, title = title)
