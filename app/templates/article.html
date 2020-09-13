@@ -10,5 +10,18 @@
     </head>
     <body>
         <h1>Add Article {{ id }}</h1>
+        <div class="container">
+ 
+            {% for new, des, url, i, pub, auth in context %}
+        
+            <img src="{{i}}" alt="">
+            <h2>{{new}}</h2> 
+            <p>{{des}}</p> 
+            <a href={{url}}>Read More</a>
+            <h5>Published: {{pub}}</h5> 
+            <h5>By: {{auth}}</h5>
+
+            {% endfor %}
+        </div>
     </body>
 </html>
