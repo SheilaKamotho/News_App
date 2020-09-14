@@ -4,7 +4,8 @@ class Config:
     General configuration parent class
     '''
     NEWS_API_BASE_URL = 'https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'
-    NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
+    NEWS_API_KEYS = os.environ.get('NEWS_API_KEY')
+    NEWS_API_KEY= 'd967ec379de94378b37409a2aa549775'
 class ProdConfig(Config):
     '''
     Production  configuration child class

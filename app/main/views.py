@@ -1,8 +1,8 @@
-from flask import render_template
-from app import app
+from flask import render_template,request,redirect,url_for
+from . import main
 from newsapi import NewsApiClient
 
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -14,11 +14,10 @@ def index():
     
  
     return render_template('index.html', heading = heading, title = title)
-@app.route('/bbc')
+@main.route('/bbc')
 def bbc():
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     all_articles = newsapi.get_everything(sources="bbc-news")
- 
     articles = all_articles['articles']
     
     desc = []
@@ -45,9 +44,9 @@ def bbc():
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('bbc.html', context=mylist)
 
-@app.route('/aljeezera')
+@main.route('/aljeezera')
 def aljeezera():
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     all_articles = newsapi.get_everything(sources="al-jazeera-english")
  
     articles = all_articles['articles']
@@ -76,9 +75,9 @@ def aljeezera():
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('aljeezera.html', context=mylist)
 
-@app.route('/cbc')
+@main.route('/cbc')
 def cbc():
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     all_articles = newsapi.get_everything(sources="cbc-news")
  
     articles = all_articles['articles']
@@ -106,9 +105,9 @@ def cbc():
  
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('cbc.html', context=mylist)
-@app.route('/cnn')
+@main.route('/cnn')
 def cnn():
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     all_articles = newsapi.get_everything(sources="cnn")
  
     articles = all_articles['articles']
@@ -137,9 +136,9 @@ def cnn():
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('cnn.html', context=mylist)
 
-@app.route('/fortune')
+@main.route('/fortune')
 def fortune():
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     all_articles = newsapi.get_everything(sources="fortune")
  
     articles = all_articles['articles']
@@ -168,9 +167,9 @@ def fortune():
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('fortune.html', context=mylist)
 
-@app.route('/medical')
+@main.route('/medical')
 def medical():
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     all_articles = newsapi.get_everything(sources="medical-news-today")
  
     articles = all_articles['articles']
@@ -199,14 +198,14 @@ def medical():
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('medical.html', context=mylist)
 
-@app.route('/source')
+@main.route('/source')
 def source():
 
     '''
     View source page function and returns the news source page and its data
     '''
     title = 'News Source'
-    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    newsapi = NewsApiClient(api_key='d967ec379de94378b37409a2aa549775')
     sources = newsapi.get_sources()
     sources = sources['sources']
  
