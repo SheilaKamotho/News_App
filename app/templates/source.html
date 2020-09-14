@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best news website </title>
-        {% endif %}
-    </head>
-    <body>
-        <h1>Add Source {{ id }}</h1>
-        <div class="container">
- 
-            {% for name, description, url in context %}
-         
-            <h3>{{name}} </h3> 
-            <h4>{{description}} </h4> 
-            <a href={{url}}>Visit Source</a>
-         
-            {% endfor %}
-         
-         
-        </div>
-    </body>
-</html>
+{% extends 'base.html'%}
+
+<!-- Content block -->
+{% block content %}
+    {% for name, description, url in context %}
+    <div class = 'card body'>       
+        <h3>{{name}} </h3> 
+        <p>{{description}} </p> 
+        <button class = 'btn btn-default'><a href={{url}}>Visit Source</a></button>
+    </div>
+
+    {% endfor %} 
+{% endblock%}

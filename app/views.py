@@ -17,9 +17,9 @@ def index():
 @app.route('/bbc')
 def bbc():
     newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
-    topheadlines = newsapi.get_top_headlines(sources="bbc-news")
+    all_articles = newsapi.get_everything(sources="bbc-news")
  
-    articles = topheadlines['articles']
+    articles = all_articles['articles']
     
     desc = []
     url = []
@@ -45,44 +45,12 @@ def bbc():
     mylist = zip(news, desc,url, img, pub, auth)
     return render_template('bbc.html', context=mylist)
 
-# @app.route('/source/<news_source>')
-# def source(news_source):
-
-#     '''
-#     View source page function and returns the news source page and its data
-#     '''
-#     title = 'News Source'
-#     newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
-#     sources = newsapi.get_sources()
-#     sources = sources['sources']
- 
-#     name = []
-#     description = []
-#     url = []
- 
-#     for i in range(len(sources)):
-#         mysources = sources[i]
- 
-#         name.append(mysources['name'])
-#         description.append(mysources['description'])
-#         url.append(mysources['url'])
- 
-#     mylist = zip(name, description, url)
-
-#     return render_template('source.html',id = news_source, title = title, context = mylist)
-
-@app.route('/article/<news_article>')
-def article(news_article):
-
-    '''
-    View article page function and returns the news article page and its data
-    '''
-    title = 'News Article'
+@app.route('/aljeezera')
+def aljeezera():
     newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
-    topheadlines = newsapi.get_top_headlines(sources="al-jazeera-english,the-verge, bbc-news" )
+    all_articles = newsapi.get_everything(sources="al-jazeera-english")
  
- 
-    articles = topheadlines['articles']
+    articles = all_articles['articles']
     
     desc = []
     url = []
@@ -106,5 +74,154 @@ def article(news_article):
  
  
     mylist = zip(news, desc,url, img, pub, auth)
+    return render_template('aljeezera.html', context=mylist)
+
+@app.route('/cbc')
+def cbc():
+    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    all_articles = newsapi.get_everything(sources="cbc-news")
  
-    return render_template('article.html',id = news_article, title = title, context = mylist)
+    articles = all_articles['articles']
+    
+    desc = []
+    url = []
+    news = []
+    img = []
+    pub = []
+    auth = []
+ 
+ 
+    for i in range(len(articles)):
+        myarticles = articles[i]
+ 
+ 
+        news.append(myarticles['title'])
+        url.append(myarticles['url'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        pub.append(myarticles['publishedAt'])
+        auth.append(myarticles['author'])
+ 
+ 
+ 
+    mylist = zip(news, desc,url, img, pub, auth)
+    return render_template('cbc.html', context=mylist)
+@app.route('/cnn')
+def cnn():
+    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    all_articles = newsapi.get_everything(sources="cnn")
+ 
+    articles = all_articles['articles']
+    
+    desc = []
+    url = []
+    news = []
+    img = []
+    pub = []
+    auth = []
+ 
+ 
+    for i in range(len(articles)):
+        myarticles = articles[i]
+ 
+ 
+        news.append(myarticles['title'])
+        url.append(myarticles['url'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        pub.append(myarticles['publishedAt'])
+        auth.append(myarticles['author'])
+ 
+ 
+ 
+    mylist = zip(news, desc,url, img, pub, auth)
+    return render_template('cnn.html', context=mylist)
+
+@app.route('/fortune')
+def fortune():
+    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    all_articles = newsapi.get_everything(sources="fortune")
+ 
+    articles = all_articles['articles']
+    
+    desc = []
+    url = []
+    news = []
+    img = []
+    pub = []
+    auth = []
+ 
+ 
+    for i in range(len(articles)):
+        myarticles = articles[i]
+ 
+ 
+        news.append(myarticles['title'])
+        url.append(myarticles['url'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        pub.append(myarticles['publishedAt'])
+        auth.append(myarticles['author'])
+ 
+ 
+ 
+    mylist = zip(news, desc,url, img, pub, auth)
+    return render_template('fortune.html', context=mylist)
+
+@app.route('/medical')
+def medical():
+    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    all_articles = newsapi.get_everything(sources="medical-news-today")
+ 
+    articles = all_articles['articles']
+    
+    desc = []
+    url = []
+    news = []
+    img = []
+    pub = []
+    auth = []
+ 
+ 
+    for i in range(len(articles)):
+        myarticles = articles[i]
+ 
+ 
+        news.append(myarticles['title'])
+        url.append(myarticles['url'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+        pub.append(myarticles['publishedAt'])
+        auth.append(myarticles['author'])
+ 
+ 
+ 
+    mylist = zip(news, desc,url, img, pub, auth)
+    return render_template('medical.html', context=mylist)
+
+@app.route('/source')
+def source():
+
+    '''
+    View source page function and returns the news source page and its data
+    '''
+    title = 'News Source'
+    newsapi = NewsApiClient(app.config['NEWS_API_KEY'])
+    sources = newsapi.get_sources()
+    sources = sources['sources']
+ 
+    name = []
+    description = []
+    url = []
+ 
+    for i in range(len(sources)):
+        mysources = sources[i]
+ 
+        name.append(mysources['name'])
+        description.append(mysources['description'])
+        url.append(mysources['url'])
+ 
+    mylist = zip(name, description, url)
+
+    return render_template('source.html', title = title, context = mylist)
+    
