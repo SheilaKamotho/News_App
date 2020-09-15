@@ -2,15 +2,24 @@
 
 <!-- Content block -->
 {% block content %}
+<h1 style="background-color:lightblue;">Fortune</h1>
     {% for new, des, url, i, pub, auth in context %}
-        <div class="card" style="width: 50rem;">
-            <img class="card-img-top" src="{{i}}" alt="Card image cap">
-            <div class="card-body">
-            <h2 class="card-title">{{new}}</h2> 
-            <p class="card-text">{{des}}<a href={{url}}> Read More...</a></p>
-            <p>Published: {{pub|truncate(13)}}</p> 
-            <p>By: {{auth}}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron" style="width: 100rem;">
+                    <div class="card" style="width: 80rem;">
+                        <img class="card-img-top" style="width: 80rem;" src="{{i}}" alt="Card image cap">
+                        <div class="card-body">
+                        <h2 class="card-title">{{new}}</h2> 
+                        <p class="card-text">{{des}}<a href={{url}}> Read More...</a></p>
+                        <p>Published: {{pub|truncate(13)}}</p> 
+                        <p>By: {{auth}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-    {% endfor %}      
+    </div>    
+    {% endfor %}
+        
 {% endblock%}

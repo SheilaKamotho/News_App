@@ -3,11 +3,20 @@
 <!-- Content block -->
 {% block content %}
     {% for name, description, url in context %}
-    <div class = 'card body'>       
-        <h3>{{name}} </h3> 
-        <p>{{description}} </p> 
-        <button class = 'btn btn-default'><a href={{url}}>Visit Source</a></button>
-    </div>
-
-    {% endfor %} 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron" style="width: 100rem;">
+                    <div class="card" style="width: 80rem;">
+                        <div class="card-body">
+                        <h2 class="card-title">{{name}}</h2> 
+                        <p class="card-text">{{description}}</p>
+                        <button class = 'btn btn-default'><a href={{url}}>Visit Source Website</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    {% endfor %}
+        
 {% endblock%}
